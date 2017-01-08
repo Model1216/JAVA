@@ -1,0 +1,16 @@
+import java.util.Map;
+
+public class HttpUtil {
+
+	public HttpUtil() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static String sendClientPost(String path, 
+			Map<String, String> map, String encode) {
+
+		return null;
+
+	}
+
+}

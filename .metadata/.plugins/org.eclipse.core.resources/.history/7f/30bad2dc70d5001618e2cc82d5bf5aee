@@ -1,0 +1,63 @@
+package javaexercise;
+
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+
+public class HttpUtil {
+
+	private static String Path = "http://10.4.26.227:8080/test/servlet/login";
+
+	private static URL url;
+
+	public HttpUtil() {
+		// TODO Auto-generated constructor stub
+	}
+
+	static {
+		try {
+			url = new URL(Path);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static String sendPostMessage(Map<String, String> params, String encode) {
+		StringBuffer buffer = new StringBuffer(Path);
+		buffer.append("?");
+		try {
+			if (params != null && !params.isEmpty()) {
+				for (Map.Entry<String, String> entry : params.entrySet()) {
+					buffer.append(entry.getKey())
+					.append("=")
+					.append(URLEncoder.encode(entry.getValue(), encode))
+					.append("&");
+				}
+
+			}
+			buffer.deleteCharAt(buffer.length() - 1);
+			System.out.println(buffer.toString());
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "";
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Map<String, String>params = new HashMap<String , String>();
+		params.put("username", "admin");
+		params.put("password", "123");
+
+
+		sendPostMessage(params, "utf-8");
+	}
+
+}

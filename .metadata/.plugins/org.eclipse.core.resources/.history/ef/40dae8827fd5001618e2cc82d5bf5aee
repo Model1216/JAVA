@@ -1,0 +1,8 @@
+
+public class HttpUtil {
+
+	public HttpUtil() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
